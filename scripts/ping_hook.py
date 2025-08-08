@@ -11,7 +11,6 @@ class APIConfig:
 
 def getorghooks(config: APIConfig):
 #Creates Array of pre-existing webhooks
-    global mist_api_count
     Hooks_Array = []
     data = get(config.hooks_url, config.headers)
     count = 1

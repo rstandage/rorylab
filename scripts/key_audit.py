@@ -90,7 +90,6 @@ def main():
             config.headers, config.limit,
             show_progress=True
         )
-        jprint(Key_Array1)
         Device_Data = format_data(Key_Array1)
         filename  = f'{orgname}_API_Key_Report_{date.today()}.csv'
         file_path = config.config_dir / filename

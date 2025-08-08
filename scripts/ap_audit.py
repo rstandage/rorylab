@@ -12,6 +12,7 @@ class APIConfig:
     get_config: bool = False
     limit: int = 200
     config_dir: Path = Path.home() / "created_files"
+    debug: bool = False
 
 class APIError(Exception):
     pass
@@ -146,7 +147,7 @@ def main():
             f'{config.baseurl}orgs/{config.org_id}/stats/devices?type=ap',
             config.headers, config.limit,
             show_progress=True,
-            debug = False
+            debug=config.debug
         )
         Device_Data = format_data(AP_Array1, AP_Array2, Site_Array, config)
         filename  = f'{orgname}_AP_Report_{date.today()}.csv'
