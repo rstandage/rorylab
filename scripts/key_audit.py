@@ -76,7 +76,7 @@ def format_data(array):
 def main():
     try:
         # Get credentials and setup
-        credentials = get_credentials(otp=True)
+        credentials = get_credentials()
         org_id = get_org_id(credentials)
         config = APIConfig(
             baseurl=credentials["api_url"],
