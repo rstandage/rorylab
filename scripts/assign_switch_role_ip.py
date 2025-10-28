@@ -118,10 +118,10 @@ def create_vlan_array(config: APIConfig, site_id: str):
 
 def create_switch_array(config: APIConfig, site_id: str):
     """Creates Array of switches for the site."""
-    url = f'{config.baseurl}orgs/{config.org_id}/devices/search?type=switch&site_id={site_id}'
+    url = f'{config.baseurl}sites/{site_id}/devices?type=switch'
     resp = safe_get(url, config.headers)
-    # Search endpoints return {'results': [...], 'total': n, 'limit': n}
-    results = resp.get('results', [])
+    # Site-level devices endpoint returns a list directly
+    devices = resp if isinstance(resp, list) else []
     
     return [
         {
@@ -130,7 +130,7 @@ def create_switch_array(config: APIConfig, site_id: str):
             'name': switch.get('name') or switch.get('hostname') or 'Unnamed',
             'model': switch.get('model')
         }
-        for idx, switch in enumerate(results, start=1)
+        for idx, switch in enumerate(devices, start=1)
     ]
 
 def user_select(array, prompt):
