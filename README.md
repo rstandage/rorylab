@@ -49,10 +49,13 @@ Most scripts are interactive and will guide you to select a site or confirm acti
    - Interactive wizard to set a switch’s name, role, and static IP configuration (IP/netmask/gateway/DNS). Optionally associates the device with a site VLAN/network pulled from derived site settings.
 
 - check_timeouts.py
-   - Lists all orgs your token can access and shows each org’s UI idle timeout. Outputs a simple table sorted by the longest timeout.
+   - Lists all orgs your token can access and shows each org's UI idle timeout. Outputs a simple table sorted by the longest timeout.
 
 - client_audit.py
    - Exports Wi‑Fi client details seen over a time window (default 7d): hostname, IP, SSID, VLAN, last AP, manufacturer, device type/OS, random MAC flag, last seen. Supports `--duration`, `--limit`, and `--debug`.
+
+- clone_org.py
+   - Clones Mist organizations and creates admin invites for multiple users. Supports batch processing via CSV (`--csv file.csv`) or interactive mode for single users. Validates user-level token, prompts for source org ID, clones with custom names, and creates org_admin invites valid for 7 days. See `scripts/CLONE_ORG_README.md` for detailed documentation.
 
 - create_msp.py
    - Creates a new MSP in Mist by name. Simple interactive prompt with a confirmation step.
